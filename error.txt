@@ -1,0 +1,11 @@
+Error: functions.config() has been removed in firebase-functions v7. Migrate to environment parameters using the params module. Migration guide: https://firebase.google.com/docs/functions/config-env#migrate-config
+    at Object.config (/workspaces/mobile-apps-fcm-push/functions/node_modules/firebase-functions/lib/v1/config.js:10:8)
+    at Object.<anonymous> (/workspaces/mobile-apps-fcm-push/functions/index.js:12:27)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.require (node:internal/modules/cjs/loader:1674:12)
+    at require (node:internal/modules/helpers:157:16)
+    at loadModule (/workspaces/mobile-apps-fcm-push/functions/node_modules/firebase-functions/lib/runtime/loader.js:21:10)

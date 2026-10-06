@@ -9,7 +9,7 @@ initializeApp();
 const android = require('./android');
 const legacy = require('./legacy');
 
-const region = (functions.config().app && functions.config().app.region) || 'us-central1';
+const region = process.env.APP_REGION || 'us-central1';
 const regionalFunctions = functions.region(region).runWith({ timeoutSeconds: 10 });
 
 // These must be imported before the handlers to ensure they are initialized correctly
@@ -31,9 +31,8 @@ exports.checkRateLimits = regionalFunctions.https.onRequest(async (req, res) =>
 );
 
 function isDebug() {
-  let conf = functions.config();
-  if (conf.debug) {
-    return conf.debug.local === 'true';
+  if (process.env.APP_DEBUG_LOCAL !== undefined) {
+    return process.env.APP_DEBUG_LOCAL === 'true';
   }
   return false;
 }

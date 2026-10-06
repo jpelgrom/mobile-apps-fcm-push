@@ -17,8 +17,7 @@ Startup function for local testing:
 # Only Once
 npm install -g firebase-tools
 
-firebase functions:config:set debug.local=true
-firebase functions:config:get > .runtimeconfig.json
+echo 'APP_DEBUG_LOCAL=true' >> .env
 
 # Whenever you want to start
 npm run serve
@@ -26,18 +25,18 @@ npm run serve
 
 # Deploy your own
 
-Change the target project if needed:
+Change the target project from `home-assistant-mobile-apps` to your own project name if needed:
 
 ```
 # Only once
 sed -i s/home-assistant-mobile-apps/myproject/g ../.firebaserc
 ```
 
-You can set the `app.region` setting if you want to deploy your functions in a another location than `us-central1`, e.g. `europe-west1`:
+You can set the `APP_REGION` environment variable if you want to deploy your functions in a another location than `us-central1`, e.g. `europe-west1`:
 
 ```
 # Only once
-firebase functions:config:set app.region="us-central1"
+echo 'APP_REGION=europe-west1' >> .env
 ```
 
 Then deploy the Cloud Functions:
@@ -45,3 +44,5 @@ Then deploy the Cloud Functions:
 ```
 firebase deploy
 ```
+
+Note: for deploying functions, your project must be on the pay-as-you-go plan (Blaze). By default new projects are on a no-cost plan (Spark). Enable pay-as-you-go in the Firebase console for your project > Settings > Usage and billing > Account and budgets > Upgrade. For individual use during development, usage is typically covered by the free tier.
